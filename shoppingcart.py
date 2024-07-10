@@ -1,5 +1,4 @@
 class Shop:
-
     globallist = []
 
     def __init__(self, itemName, itemRate):
@@ -11,19 +10,21 @@ class Shop:
         print("Item added successfully.")
 
     def removeItem(self, wannaRemove):
-        index = 0
-        for name, cost in Shop.globallist:
+        for index, (name, cost) in enumerate(Shop.globallist):
             if wannaRemove == name:
                 Shop.globallist.pop(index)
-            index += 1
+                print("Item removed successfully.")
+                return
+        print("Item not found.")
 
     def displayproducts(self):
         for name, rate in Shop.globallist:
             print(f"{name} -> {rate}")
 
+# Initialize shop1 (not used directly in the loop but serves as a template)
 shop1 = Shop("Test", 1)
-shop1.removeItem(["Test, 1"])
-choice = 1
+
+choice = 0
 while(choice != 4):
     choice = int(input("\n\n1. Add item\n2. Remove item\n3. Display items\n4. Quit\n\nEnter your choice: "))
     if choice == 1:
